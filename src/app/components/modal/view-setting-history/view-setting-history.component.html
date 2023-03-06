@@ -1,0 +1,51 @@
+<ng-template #viewContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+        Device Info: 
+        {{ deviceData.name }} - {{ deviceData.brand.toUpperCase() }} - (AC is
+        currently {{ deviceData.state == "true" ? "ON" : "OFF" }})
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                  <th scope="col">#</th>
+                  <th scope="col">V-Swing</th>
+                  <th scope="col">H-Swing</th>
+                  <th scope="col">Sleep Time</th>
+                  <th scope="col">On Time</th>
+                  <th scope="col">Speed</th>
+                  <th scope="col">Temp</th>
+                  <th scope="col">Turbo</th>
+                  <th scope="col">R-Time</th>
+                  <th scope="col">U-Time</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let info of settingHistory|filterList:deviceData.id; let i = index" class="text-center">
+                    <td>{{i+1}}</td>
+                    <td>{{info.vSwing == 'true' ? 'Yes':'No'}}</td>
+                    <td>{{info.hSwing == 'true' ? 'Yes': 'No'}}</td>
+                    <td>{{info.sleep == 'true'?'Yes':'No'}}</td>
+                    <td>{{info.timerOn == 'true'?'Yes':'No'}}</td>
+                    <td>{{info.speed}}</td>
+                    <td>{{info.temp}}</td>
+                    <td>{{info.turbo == 'true' ? 'Yes': 'No'}}</td>
+                    <td>{{info.reqTime| date:'short'}}</td>
+                    <td>{{info.updateTime | date:'short'}}</td>
+                    <td>{{info.updateTime ? 'Completed': 'Pending'}}</td>
+                </tr>
+              </tbody>
+        </table>
+        </div>
+  </div>
+</ng-template>

@@ -1,0 +1,7 @@
+.mb-3>label {
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}

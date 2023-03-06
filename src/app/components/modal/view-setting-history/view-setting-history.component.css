@@ -2,3 +2,7 @@
     --bs-modal-width: 80% !important;
     width: 80% !important;
 }
+
+.modal-content {
+    width: 150% !important;
+}
